@@ -13,7 +13,7 @@ class Item extends Model
      */
     protected $fillable = ['title', 'description', 'point_num', 'url', 'image', 'is_active', 'start_time', 'end_time'];
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany('App\Models\Category', 'item_categories', 'item_id', 'category_id');;
     }

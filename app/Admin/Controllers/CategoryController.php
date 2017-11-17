@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Category;
+
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -9,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ExampleController extends Controller
+class CategoryController extends Controller
 {
     use ModelForm;
 
@@ -22,8 +24,8 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Categories');
+            $content->description('management');
 
             $content->body($this->grid());
         });
@@ -39,8 +41,8 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Category');
+            $content->description('edit');
 
             $content->body($this->form()->edit($id));
         });
@@ -55,8 +57,8 @@ class ExampleController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('Category');
+            $content->description('create');
 
             $content->body($this->form());
         });
@@ -69,12 +71,21 @@ class ExampleController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(YourModel::class, function (Grid $grid) {
+        return Admin::grid(Category::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->name('Name')->sortable();
+            $grid->description('Description');
 
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->created_at()->sortable();
+            $grid->updated_at()->sortable();
+
+            $grid->filter(function($filter){
+                $filter->like('name', 'Category Name');
+                $filter->like('description', 'Category Description');
+                $filter->date('created_at', 'Created At');
+                $filter->date('updated_at', 'Updated At');
+            });
         });
     }
 
@@ -85,9 +96,12 @@ class ExampleController extends Controller
      */
     protected function form()
     {
-        return Admin::form(YourModel::class, function (Form $form) {
+        return Admin::form(Category::class, function (Form $form) {
 
             $form->display('id', 'ID');
+
+            $form->text('name', 'Name')->rules('required|min:2|max:255');
+            $form->textarea('description', 'Description')->rules('required');
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');

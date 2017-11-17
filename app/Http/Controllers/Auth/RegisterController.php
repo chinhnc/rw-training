@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
 use App\Http\Controllers\Controller;
