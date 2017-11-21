@@ -13,5 +13,8 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('items', ItemController::class);
     $router->resource('categories', CategoryController::class);
+    $router->resource('users', UserController::class, ['except' => [
+        'create', 'store', 'destroy'
+    ]]);
 
 });
