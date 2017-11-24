@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('user/activation/{token}', 'Auth\RegisterController@activateUser')->name('user.activate');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'UserController@show')->name('user_show');
+    Route::post('/profile', 'UserController@update')->name('user_update');
+    Route::post('/profile/update_password', 'UserController@updatePassword')->name('password_update');
+});
