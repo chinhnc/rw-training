@@ -1861,8 +1861,8 @@ table.add-manage-table > tbody > tr > th {
 .item-list.make-grid {
   float: left;
   clear: none;
-  width: 23%;
-  height: 536px;
+  width: 31%;
+  height: 400px;
   margin-right: 16px;
 }
 .item-list.make-grid .photobox,

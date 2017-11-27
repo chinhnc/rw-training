@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('pageTitle', 'ログイン')
+
 @section('content')
     <!-- Page Header Start -->
     <div class="page-header" style="background: url(assets/img/banner1.jpg);">
@@ -7,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb-wrapper">
-                        <h2 class="page-title">Login to account</h2>
+                        <h2 class="page-title">ログイン</h2>
                     </div>
                 </div>
             </div>
@@ -20,7 +22,7 @@
                 <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
                     <div class="page-login-form box">
                         <h3>
-                            Login
+                            ログイン
                         </h3>
                         @if (session('activationStatus'))
                             <div class="alert alert-success">
@@ -59,15 +61,15 @@
                             </div>
                             <div class="checkbox">
                                 <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="float: left;">
-                                <label for="remember">Remember me</label>
+                                <label for="remember">次回から自動的にログイン</label>
                             </div>
                             <button type="submit" class="btn btn-common log-btn">
-                                Login
+                                ログイン
                             </button>
                         </form>
                         <ul class="form-links">
-                            <li class="pull-left"><a href="{{ route('register') }}">Don't have an account?</a></li>
-                            <li class="pull-right"><a href="{{ route('password.request') }}">Lost your password?</a></li>
+                            <li class="pull-left"><a href="{{ route('register') }}">会員を登録しましょう?</a></li>
+                            <li class="pull-right"><a href="{{ route('password.request') }}">パズワード忘れ？</a></li>
                         </ul>
                     </div>
                 </div>
