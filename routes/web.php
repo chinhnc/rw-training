@@ -24,4 +24,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'UserController@show')->name('user_show');
     Route::post('/profile', 'UserController@update')->name('user_update');
     Route::post('/profile/update_password', 'UserController@updatePassword')->name('password_update');
+    Route::post('/item/{item}/action', 'ItemController@actionItem')->name('action_item');
 });

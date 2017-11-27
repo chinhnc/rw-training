@@ -25,7 +25,10 @@
                                 </aside>
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-danger">サービスを利用して{{ $item->point_num }}ポイントゲット！</button>
+                                <form role="form" method="POST" action="{{ route('action_item', $item->id) }}">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger">サービスを利用して{{ $item->point_num }}ポイントゲット！</button>
+                                </form>
                             </div>
                         </div>
                     </div>

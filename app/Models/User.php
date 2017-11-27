@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function getCurrentPoint()
     {
-        return $this->belongsTo('App\Models\UserPoint');
+        return $this->hasOne('App\Models\UserPoint');
     }
 
     public function getActionHistories()
