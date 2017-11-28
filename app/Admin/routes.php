@@ -16,5 +16,5 @@ Route::group([
     $router->resource('users', UserController::class, ['except' => [
         'create', 'store', 'destroy'
     ]]);
-
+    $router->get('users/{user}/passbook', 'UserController@getPassbookByUser')->name('admin_passbook');
 });

@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\ActionHistory;
 use App\Models\User;
 
 use Encore\Admin\Form;
@@ -48,6 +49,49 @@ class UserController extends Controller
         });
     }
 
+    public function getPassbookByUser($id)
+    {
+        return Admin::content(function (Content $content) use ($id) {
+
+            $content->header('Users');
+            $content->description('Passbook');
+
+            $content->body($this->actionsByUser($id));
+        });
+    }
+
+    /**
+     * Make a grid builder.
+     *
+     * @return Grid
+     */
+    protected function actionsByUser($id)
+    {
+        return Admin::grid(ActionHistory::class, function (Grid $grid) use ($id) {
+            $grid->model()->where('user_id', $id)->orderBy('created_at', 'desc');
+
+            $grid->item_id('Item ID');
+            $grid->item()->display(function ($item) {
+                return $item['title'];
+            });
+            $grid->point_num('Point');
+            $grid->status('Status');
+
+            $grid->created_at()->sortable();
+            $grid->updated_at()->sortable();
+
+            $grid->filter(function($filter){
+                $filter->equal('item_id', 'Item ID');
+                $filter->in('status')->multipleSelect(['approval' => 'approval', 'pending' => 'pending', 'reject' => 'reject',]);
+                $filter->date('created_at', 'Created At');
+                $filter->date('updated_at', 'Updated At');
+            });
+
+            $grid->disableCreation();
+            $grid->disableActions();
+        });
+    }
+
     /**
      * Make a grid builder.
      *
@@ -81,6 +125,7 @@ class UserController extends Controller
             $grid->disableCreation();
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
+                $actions->append('<a href="' . route('admin_passbook', $actions->getKey()) . '"><i class="fa fa-eye"></i>Passbook</a>');
             });
         });
     }
