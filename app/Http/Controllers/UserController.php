@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateInfoRequest;
 use App\Http\Requests\UpdatePasswordRequest;
+use App\Models\User;
 use Auth;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -33,5 +35,28 @@ class UserController extends Controller
         }
 
         return back()->with('error-mess', '現在のパスワードを正しく入力してください！');
+    }
+
+    public function showPassbook()
+    {
+        $user = Auth::user();
+        $actions = $user->getActionHistories()->paginate(15);
+
+        return view('users.action_histories', compact(['actions', 'user']));
+    }
+
+    public function searchPassbookByMonth(Request $request)
+    {
+        if ($request->year && $request->month) {
+            $user = Auth::user();
+            $actions = $user->getActionHistories()
+                ->whereYear('created_at', '=', $request->year)
+                ->whereMonth('created_at', '=', $request->month)
+                ->paginate(15);
+
+            return view('users.action_histories', compact(['actions', 'user']));
+        }
+
+        return redirect(route('passbook'));
     }
 }
