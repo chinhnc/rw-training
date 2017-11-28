@@ -34,6 +34,6 @@ class User extends Authenticatable
 
     public function getActionHistories()
     {
-        return $this->hasMany('App\Models\ActionHistory');
+        return $this->hasMany('App\Models\ActionHistory')->orderByDesc('created_at');
     }
 }

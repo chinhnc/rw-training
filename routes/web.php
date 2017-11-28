@@ -25,4 +25,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile', 'UserController@update')->name('user_update');
     Route::post('/profile/update_password', 'UserController@updatePassword')->name('password_update');
     Route::post('/item/{item}/action', 'ItemController@actionItem')->name('action_item');
+    Route::get('/passbook', 'UserController@showPassbook')->name('passbook');
+    Route::post('/passbook/search', 'UserController@searchPassbookByMonth')->name('passbook_search');
 });

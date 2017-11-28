@@ -23,6 +23,9 @@
                         <li><a href="{{ route('register') }}"><i class="lnr lnr-user"></i> 登録</a></li>
                     @else
                         <li>
+                            <a href="{{ route('passbook') }}"><span style="color: #ff5500;">{{ Auth::user()->getCurrentPoint->approval_point }}pt</span>(判定中<span style="color: #ff5500;">{{ Auth::user()->getCurrentPoint->pending_point }}pt</span>)</a>
+                        </li>
+                        <li>
                             <a href="{{ route('user_show') }}"><i class="lnr lnr-user"></i>{{ Auth::user()->nickname }}</a>
                         </li>
                         <li>
