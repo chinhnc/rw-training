@@ -11,7 +11,7 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'tel', 'subject', 'content', 'checked'];
+    protected $fillable = ['user_id', 'email', 'tel', 'subject', 'content', 'checked'];
 
     public function user()
     {
