@@ -17,4 +17,8 @@ Route::group([
         'create', 'store', 'destroy'
     ]]);
     $router->get('users/{user}/passbook', 'UserController@getPassbookByUser')->name('admin_passbook');
+    $router->resource('contacts', ContactController::class,[ 'except' => [
+        'create', 'store', 'destroy'
+    ]]);
+    $router->post('contacts/toggle-status', 'ContactController@toggleContactCheckedStatus');
 });

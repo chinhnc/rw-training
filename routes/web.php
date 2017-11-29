@@ -16,9 +16,8 @@ Route::get('user/activation/{token}', 'Auth\RegisterController@activateUser')->n
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/categories/{category}', 'HomeController@showItemsByCategory')->name('show_items_by_category');
-Route::resource('item', 'ItemController', ['only' => [
-    'show'
-]]);
+Route::resource('item', 'ItemController', ['only' => ['show']]);
+Route::resource('contact', 'ContactController', ['only' => ['create', 'store']]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'UserController@show')->name('user_show');
