@@ -16,14 +16,14 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $items = Item::paginate(9);
+        $items = Item::active()->defaultOrder()->paginate(config('settings.items.paginate.perPage'));
         return view('homes.index', compact(['categories', 'items']));
     }
 
     public function showItemsByCategory(Category $category)
     {
         $categories = Category::all();
-        $items = $category->items()->paginate(9);
+        $items = $category->activeItems()->defaultOrder()->paginate(config('settings.items.paginate.perPage'));
         return view('homes.show_item_by_category', compact(['items', 'category', 'categories']));
     }
 }

@@ -6,6 +6,11 @@
     <div class="main-container">
         <div class="container">
             <div class="row">
+                @if (session('error-msg'))
+                    <div class="alert alert-danger">
+                        {{ session('error-msg') }}
+                    </div>
+                @endif
                 @include('common.categories_bar', ['categories' => $categories])
                 <div class="col-sm-9 page-content">
                     <div class="box">

@@ -29,4 +29,9 @@ class ActionHistory extends Model
     {
         return $user_id . '_' . $item_id . '_' . now() . '_' . str_random(5);
     }
+
+    public function showStatus()
+    {
+        return config('settings.items.status.' . $this->status);
+    }
 }

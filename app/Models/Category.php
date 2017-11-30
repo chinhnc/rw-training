@@ -17,4 +17,9 @@ class Category extends Model
     {
         return $this->belongsToMany('App\Models\Item', 'item_categories', 'category_id', 'item_id');
     }
+
+    public function activeItems()
+    {
+        return $this->items()->active();
+    }
 }

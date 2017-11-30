@@ -11,7 +11,7 @@
                         @foreach ($categories as $category)
                             <li>
                                 <a href="{{ route('show_items_by_category', $category->id) }}">
-                                    {{ $category->name }} <span class="category-counter">({{ sizeof($category->items) }})</span>
+                                    {{ $category->name }} <span class="category-counter">({{ sizeof($category->activeItems) }})</span>
                                 </a>
                             </li>
                         @endforeach
