@@ -548,7 +548,7 @@ nav#menu span.fa.fa-bars:hover {
   height: 100%;
 }
 .section-intro .main-text {
-  margin: 100px 15px 130px;
+  margin: 50px 15px 50px;
   text-transform: uppercase;
 }
 .section-intro .main-text .intro-title {
@@ -2537,4 +2537,13 @@ textarea:focus {
   display: inline-block;
   margin-bottom: 0px;
   vertical-align: middle;
+}
+
+.caption {
+  color: red;
+  margin: 10px auto 30px;
+}
+
+.add-image {
+  text-align: center;
 }

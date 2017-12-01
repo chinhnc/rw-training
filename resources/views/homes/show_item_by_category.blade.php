@@ -3,12 +3,7 @@
 @section('pageTitle', 'カテゴリー')
 
 @section('content')
-    <div id="search-row-wrapper">
-        <div class="container">
-            <div class="search-inner">
-            </div>
-        </div>
-    </div>
+    @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
     <div class="main-container">
         <div class="container">
             <div class="row">

@@ -47,14 +47,16 @@ class UserController extends Controller
 
     public function searchPassbookByMonth(Request $request)
     {
-        if ($request->year && $request->month) {
+        $year = $request->year;
+        $month = $request->month;
+        if ($year && $month) {
             $user = Auth::user();
             $actions = $user->getActionHistories()
-                ->whereYear('created_at', '=', $request->year)
-                ->whereMonth('created_at', '=', $request->month)
+                ->whereYear('created_at', '=', $year)
+                ->whereMonth('created_at', '=', $month)
                 ->paginate(15);
 
-            return view('users.action_histories', compact(['actions', 'user']));
+            return view('users.action_histories', compact(['actions', 'user', 'year', 'month']));
         }
 
         return redirect(route('passbook'));

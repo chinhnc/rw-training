@@ -18,12 +18,21 @@
             <!-- Navbar Start -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ route('contact.create') }}">問い合わせ</a></li>
                     @guest
                         <li><a href="{{ route('login') }}"><i class="lnr lnr-enter"></i> ログイン</a></li>
                         <li><a href="{{ route('register') }}"><i class="lnr lnr-user"></i> 登録</a></li>
                     @else
                         <li>
-                            <a href="{{ route('passbook') }}"><span style="color: #ff5500;">{{ Auth::user()->getCurrentPoint->approval_point }}pt</span>(判定中<span style="color: #ff5500;">{{ Auth::user()->getCurrentPoint->pending_point }}pt</span>)</a>
+                            <a href="{{ route('passbook') }}">
+                                <span style="color: #ff5500;">
+                                    {{ Auth::user()->getCurrentPoint ? Auth::user()->getCurrentPoint->approval_point : 0 }}pt
+                                </span>
+                                (判定中
+                                <span style="color: #ff5500;">{{ Auth::user()->getCurrentPoint ? Auth::user()->getCurrentPoint->pending_point : 0 }}
+                                    pt
+                                </span>)
+                            </a>
                         </li>
                         <li>
                             <a href="{{ route('user_show') }}"><i class="lnr lnr-user"></i>{{ Auth::user()->nickname }}</a>

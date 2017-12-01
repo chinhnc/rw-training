@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'ホームページ')
+@section('pageTitle', '案件検索')
 
 @section('content')
     @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
@@ -9,7 +9,9 @@
             <div class="row">
                 @include('common.categories_bar', ['categories' => $categories])
                 <div class="col-sm-9 page-content">
-
+                    <div class="caption">
+                        <h2>検索結果</h2>
+                    </div>
                     <div class="adds-wrapper">
                         @foreach($items as $item)
                             <div class="item-list make-grid">
@@ -37,7 +39,13 @@
                             </div>
                         @endforeach
                     </div>
-                    {{ $items->links() }}
+                    <div class="text-center" style="margin-top: 20px">
+                        @if(!empty($keyword))
+                            {!! $items->appends(['keyword' => $keyword])->render() !!}
+                        @else
+                            {{ $items->links() }}
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

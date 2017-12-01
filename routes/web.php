@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/categories/{category}', 'HomeController@showItemsByCategory')->name('show_items_by_category');
 Route::resource('item', 'ItemController', ['only' => ['show']]);
 Route::resource('contact', 'ContactController', ['only' => ['create', 'store']]);
+Route::any('/search', 'ItemController@searchItem')->name('item_search');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'UserController@show')->name('user_show');
@@ -25,5 +26,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/update_password', 'UserController@updatePassword')->name('password_update');
     Route::post('/item/{item}/action', 'ItemController@actionItem')->name('action_item');
     Route::get('/passbook', 'UserController@showPassbook')->name('passbook');
-    Route::post('/passbook/search', 'UserController@searchPassbookByMonth')->name('passbook_search');
+    Route::any('/passbook/search', 'UserController@searchPassbookByMonth')->name('passbook_search');
 });
