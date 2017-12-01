@@ -7,7 +7,6 @@ $('.selectpicker').selectpicker({
 });
 });
 
-
 //CounterUp
 jQuery(document).ready(function( $ ) {
   $('.counter').counterUp({

@@ -21,7 +21,9 @@
                     <h2 class="title-2">
                         何も問い合わせましょう
                     </h2>
-
+                    <div class="alert alert-danger print-error-msg" style="display:none">
+                        <ul></ul>
+                    </div>
                     <form id="contactForm" class="contact-form" action="{{ route('contact.store') }}" method="POST" data-toggle="validator" novalidate="true">
                         {{ csrf_field() }}
                         <div class="row">

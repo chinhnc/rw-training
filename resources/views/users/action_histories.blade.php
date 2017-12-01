@@ -38,22 +38,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @if(sizeof($actions) > 0)
                         @foreach($actions as $action)
-                        <tr>
-                            <td>{{ $action->created_at }}</td>
-                            <td><a href="{{ route('item.show', $action->item->id) }}">{{ $action->item->title }}</a></td>
-                            <td style="color: {{ $action->status == "approval" ? 'blue' : $action->status == "pending" ?: 'red' }};">{{ $action->showStatus() }}</td>
-                            <td class="numeric">{{ $action->point_num }}P</td>
-                        </tr>
-                    @endforeach
-                    @else
-                        該当の履歴がありません！
-                    @endif
+                            <tr>
+                                <td>{{ $action->created_at }}</td>
+                                <td><a href="{{ route('item.show', $action->item->id) }}">{{ $action->item->title }}</a></td>
+                                <td style="color: {{ $action->status == "approval" ? 'blue' : $action->status == "pending" ?: 'red' }};">{{ $action->showStatus() }}</td>
+                                <td class="numeric">{{ $action->point_num }}P</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                @if(sizeof($actions) == 0)
+                    <div>該当の履歴がありません！</div>
+                @endif
             </div>
             <div class="text-center" style="margin-top: 20px">
+                @if(sizeof($actions) == 0)
+                    <div style="color: red;">該当の履歴がありません！</div>
+                @endif
                 @if(!empty($year) && !empty($month))
                     {!! $actions->appends(['month' => $month, 'year' => $year])->render() !!}
                 @else

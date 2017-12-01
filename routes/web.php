@@ -19,12 +19,14 @@ Route::get('/categories/{category}', 'HomeController@showItemsByCategory')->name
 Route::resource('item', 'ItemController', ['only' => ['show']]);
 Route::resource('contact', 'ContactController', ['only' => ['create', 'store']]);
 Route::any('/search', 'ItemController@searchItem')->name('item_search');
+Route::get('search/autocomplete', 'ItemController@autocomplete');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'UserController@show')->name('user_show');
     Route::post('/profile', 'UserController@update')->name('user_update');
     Route::post('/profile/update_password', 'UserController@updatePassword')->name('password_update');
     Route::post('/item/{item}/action', 'ItemController@actionItem')->name('action_item');
+    Route::get('/item/{item}/action', 'ItemController@show');
     Route::get('/passbook', 'UserController@showPassbook')->name('passbook');
     Route::any('/passbook/search', 'UserController@searchPassbookByMonth')->name('passbook_search');
 });
