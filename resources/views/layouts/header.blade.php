@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="navbar-brand logo" href="{{ route('home') }}"><img src="/assets/img/logo.png" alt=""></a>
+                <a class="" href="{{ route('home') }}"><h4>アフリエイトサイト</h4></a>
             </div>
             <!-- brand and toggle menu for mobile End -->
 

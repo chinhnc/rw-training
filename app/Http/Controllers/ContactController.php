@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactCreateRequest;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 use Auth;
+use Validator;
 
 class ContactController extends Controller
 {
@@ -13,18 +14,17 @@ class ContactController extends Controller
         return view('contacts.create');
     }
 
-    public function store(Request $request)
+    public function store(ContactCreateRequest $request)
     {
         $user = Auth::user();
-
         Contact::create([
             'user_id' => !$user?: $user->id, // check if user logined? insert user_id
             'tel' => $request->tel,
             'email' => $request->email,
             'subject' => $request->subject,
-            'content' => $request->msg_content,
+            'content' => $request->message,
         ]);
 
-        return "success";
+        return 'success';
     }
 }

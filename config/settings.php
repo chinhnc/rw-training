@@ -15,6 +15,10 @@ return [
         ],
         'paginate' => [
             'perPage' => 9,
+        ],
+        'autocomplete' => [
+            'termCount' => 10,
+            'stringLimit' => 60,
         ]
     ]
 ];
