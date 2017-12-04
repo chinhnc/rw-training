@@ -48,9 +48,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                @if(sizeof($actions) == 0)
-                    <div>該当の履歴がありません！</div>
-                @endif
             </div>
             <div class="text-center" style="margin-top: 20px">
                 @if(sizeof($actions) == 0)

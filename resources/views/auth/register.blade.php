@@ -31,6 +31,11 @@
                                 {{ session('message') }}
                             </div>
                         @endif
+                        @if ($errors->has('g-recaptcha-response'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('g-recaptcha-response') }}
+                            </div>
+                        @endif
                         <form role="form" class="login-form" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('nickname') ? ' has-error' : '' }}">
@@ -97,8 +102,8 @@
                                 </div>
                                 @if ($errors->has('gender'))
                                     <span>
-                                            <strong>{{ $errors->first('gender') }}</strong>
-                                        </span>
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -118,6 +123,9 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="確認パスワード">
                                 </div>
                             </div>
+                            <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                                {!! app('captcha')->display(); !!}
+                            </div>
                             <button class="btn btn-common log-btn" type="submit">登録</button>
                         </form>
                     </div>
@@ -126,4 +134,8 @@
         </div>
     </section>
     <!-- Content section End -->
+@endsection
+
+@section('javascript')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection

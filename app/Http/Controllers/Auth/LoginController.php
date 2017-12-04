@@ -47,12 +47,27 @@ class LoginController extends Controller
         $user = Auth::user();
         if (!$user->activated) {
             auth()->logout();
-            return back()->with('activationWarning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            return back()->with('activationWarning', '確認のメールを送信しました。メール内のURLをクリックし、登録を完了してください。');
         } else if (!$user->is_active) {
             auth()->logout();
-            return back()->with('activationWarning', 'Your account has been blocked!');
+            return back()->with('activationWarning', '申し訳ございませんが、このアカウントはブロックされました！');
         }
 
         return redirect()->intended($this->redirectPath());
+    }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function validateLogin(\Illuminate\Http\Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required',
+                'password' => 'required',
+                'g-recaptcha-response' => 'required|captcha',
+        ]);
     }
 }

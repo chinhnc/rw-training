@@ -15,11 +15,11 @@ class Point
     public static function updatePointForUser($user, $item)
     {
         // get current point of current user
-        $currentPoint = $user->getCurrentPoint->lockForUpdate()->first();
+        $currentPoint = $user->getCurrentPoint()->lockForUpdate()->first();
 
         if (!$currentPoint) {
             UserPoint::create(['user_id' => $user->id])->save();
-            $currentPoint = $user->getCurrentPoint->lockForUpdate()->first();
+            $currentPoint = $user->getCurrentPoint()->lockForUpdate()->first();
         }
 
         //update current point for current user

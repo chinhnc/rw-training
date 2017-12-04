@@ -1,5 +1,5 @@
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 <script type="text/javascript" src="{{ asset('assets/js/jquery-min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/material.min.js') }}"></script>

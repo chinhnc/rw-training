@@ -18,7 +18,7 @@ class ContactController extends Controller
     {
         $user = Auth::user();
         Contact::create([
-            'user_id' => !$user?: $user->id, // check if user logined? insert user_id
+            'user_id' => $user? $user->id : null, // check if user logined? insert user_id
             'tel' => $request->tel,
             'email' => $request->email,
             'subject' => $request->subject,

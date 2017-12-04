@@ -103,6 +103,10 @@ class ItemController extends Controller
                 $filter->date('created_at', 'Created At');
                 $filter->date('updated_at', 'Updated At');
             });
+
+            $grid->actions(function ($actions) {
+                $actions->disableDelete();
+            });
         });
     }
 

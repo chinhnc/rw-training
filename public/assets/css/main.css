@@ -2547,3 +2547,7 @@ textarea:focus {
 .add-image {
   text-align: center;
 }
+
+#categories-bar:hover {
+  cursor: pointer;
+}
