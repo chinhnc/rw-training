@@ -158,3 +158,15 @@ $(document).ready(function () {
     $('.item-list .add-desc-box').removeClass("col-sm-9");
     $('.item-list .add-desc-box').addClass("col-sm-7");
   });
+
+  $(document).ready(function () {
+    if ($("body").hasScrollBar()) {
+        $(".footer").addClass("footer-fix");
+    }
+  });
+
+(function($) {
+    $.fn.hasScrollBar = function() {
+        return this.get(0).scrollHeight > this.height();
+    }
+})(jQuery);

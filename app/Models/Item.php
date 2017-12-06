@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use willvincent\Rateable\Rateable;
 
 class Item extends Model
 {
+    use Rateable;
     use Searchable;
     /**
      * The attributes that are mass assignable.
