@@ -39,6 +39,7 @@ class UserCreateRequest extends FormRequest
             'password'  => 'required|string|min:6|confirmed',
             'birthday'  => 'required',
             'gender'    => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ];
     }
 }

@@ -24,6 +24,11 @@
                         <h3>
                             ログイン
                         </h3>
+                        @if ($errors->has('g-recaptcha-response'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('g-recaptcha-response') }}
+                            </div>
+                        @endif
                         @if (session('activationStatus'))
                             <div class="alert alert-success">
                                 {{ trans('auth.activationStatus') }}
@@ -63,6 +68,9 @@
                                 <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="float: left;">
                                 <label for="remember">次回から自動的にログイン</label>
                             </div>
+                            <div>
+                                {!! app('captcha')->display(); !!}
+                            </div>
                             <button type="submit" class="btn btn-common log-btn">
                                 ログイン
                             </button>
@@ -76,4 +84,7 @@
             </div>
         </div>
     </section>
+@endsection
+@section('javascript')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection

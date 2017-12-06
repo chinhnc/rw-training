@@ -24,5 +24,6 @@
 
     @include('layouts.javascript')
     @yield('javascript')
+    @yield('categories-bar-js')
 </body>
 </html>
