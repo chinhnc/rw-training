@@ -29,4 +29,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/item/{item}/action', 'ItemController@show');
     Route::get('/passbook', 'UserController@showPassbook')->name('passbook');
     Route::any('/passbook/search', 'UserController@searchPassbookByMonth')->name('passbook_search');
+    Route::post('/item/{item}/review', 'ItemController@review')->name('item-review');
 });

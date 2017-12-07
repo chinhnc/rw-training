@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewCreateRequest;
 use App\Models\ActionHistory;
 use App\Models\Category;
 use App\Models\Item;
@@ -9,6 +10,7 @@ use App\Models\Point;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
+use willvincent\Rateable\Rating;
 
 class ItemController extends Controller
 {
@@ -74,5 +76,16 @@ class ItemController extends Controller
         }
 
         return response()->json($results);
+    }
+
+    public function review(Item $item, ReviewCreateRequest $request)
+    {
+        $rating = new Rating;
+        $rating->rating = $request->star;
+        $rating->review = $request->review;
+        $rating->user_id = Auth::user()->id;
+        $item->ratings()->save($rating);
+
+        return back()->with('success-msg', 'レビューを送りました！');
     }
 }

@@ -170,6 +170,7 @@ return [
 
         Laravel\Scout\ScoutServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
 
         /*
          * Application Service Providers...

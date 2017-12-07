@@ -122,5 +122,7 @@ return [
         'birthday' => '生年月日',
         'gender' => '性別',
         'password' => 'パスワード',
+        'review' => 'レビューの内容',
+        'star' => 'スター点数',
     ],
 ];
