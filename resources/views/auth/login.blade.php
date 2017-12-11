@@ -42,14 +42,14 @@
                         @endif
                         <form role="form" class="login-form" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('emailOrNickname') ? ' has-error' : '' }}">
                                 <div class="input-icon">
                                     <i class="icon fa fa-user"></i>
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocu placeholder="Email">
+                                    <input id="email" type="text" class="form-control" name="emailOrNickname" value="{{ old('emailOrNickname') }}" required autofocu placeholder="Email or Nickname">
                                 </div>
-                                @if ($errors->has('email'))
+                                @if ($errors->has('emailOrNickname'))
                                     <span>
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('emailOrNickname') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -71,6 +71,7 @@
                             <div>
                                 {!! app('captcha')->display(); !!}
                             </div>
+                            <br>
                             <button type="submit" class="btn btn-common log-btn">
                                 ログイン
                             </button>
