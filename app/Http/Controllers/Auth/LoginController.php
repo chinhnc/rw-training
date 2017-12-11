@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Factories\ActivationFactory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -62,12 +63,25 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    protected function validateLogin(\Illuminate\Http\Request $request)
+    protected function validateLogin(Request $request)
     {
         $this->validate($request, [
             $this->username() => 'required',
                 'password' => 'required',
                 'g-recaptcha-response' => 'required|captcha',
         ]);
+    }
+
+    protected function username()
+    {
+        return 'emailOrNickname';
+    }
+
+    protected function credentials(Request $request)
+    {
+        $field = filter_var($request->emailOrNickname, FILTER_VALIDATE_EMAIL) ? 'email' : 'nickname';
+        $request->merge([$field => $request->emailOrNickname]);
+
+        return $request->only($field, 'password');
     }
 }
