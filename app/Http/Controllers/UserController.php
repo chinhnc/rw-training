@@ -40,7 +40,7 @@ class UserController extends Controller
     public function showPassbook()
     {
         $user = Auth::user();
-        $actions = $user->getActionHistories()->paginate(15);
+        $actions = $user->getActionHistories()->paginate(config('settings.users.passbook.paginate.perPage'));
 
         return view('users.action_histories', compact(['actions', 'user']));
     }
@@ -54,7 +54,7 @@ class UserController extends Controller
             $actions = $user->getActionHistories()
                 ->whereYear('created_at', '=', $year)
                 ->whereMonth('created_at', '=', $month)
-                ->paginate(15);
+                ->paginate(config('settings.users.passbook.paginate.perPage'));
 
             return view('users.action_histories', compact(['actions', 'user', 'year', 'month']));
         }

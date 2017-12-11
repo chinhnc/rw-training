@@ -4,10 +4,11 @@
 
 @section('content')
     @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
-    <div class="main-container">
+    @include('common.top_items', ['top_items' => $top_items])
+    <div style="padding-bottom: 80px;">
         <div class="container">
             <div class="row">
-                @include('common.categories_bar', ['categories' => $categories])
+                @include('common.categories_bar', ['categories' => $categories, 'top_users' => $top_users])
                 <div class="col-sm-9 page-content">
                     <div class="product-filter" style="color: red;">
                         {{ $category->name }}:
