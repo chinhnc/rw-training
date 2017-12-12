@@ -20,5 +20,15 @@ return [
             'termCount' => 10,
             'stringLimit' => 60,
         ]
+    ],
+    'users' => [
+        'passbook' => [
+            'paginate' => [
+                'perPage' => 15,
+            ]
+        ],
+    ],
+    'cache' => [
+        'cache_minutes' => 1440,
     ]
 ];

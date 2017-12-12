@@ -3,9 +3,11 @@
 namespace App\Console;
 
 use App\Models\ActionHistory;
+use App\Models\Ranking;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 class Kernel extends ConsoleKernel
 {
@@ -31,7 +33,7 @@ class Kernel extends ConsoleKernel
 
             foreach ($actionHistories as $actionHistory) {
                 // get current point of user
-                $currentPoint = $actionHistory->user->getCurrentPoint->lockForUpdate()->first();
+                $currentPoint = $actionHistory->user->getCurrentPoint()->lockForUpdate()->first();
 
                 DB::transaction(function () use ($currentPoint, $actionHistory) {
                     //このifはクロンタブで８０％アクションを承認する。これはただ例です。現在承認の要件は決まっていませんので。
@@ -54,6 +56,10 @@ class Kernel extends ConsoleKernel
                     }
                 });
             }
+
+            // get and put ranking to cache
+            Ranking::getAndPutCurrentTopItemsToCache();
+            Ranking::getAndPutCurrentTopUsersToCache();
         })->daily();
     }
 

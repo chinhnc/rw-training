@@ -7,7 +7,7 @@
     <div class="main-container">
         <div class="container">
             <div class="row">
-                @include('common.categories_bar', ['categories' => $categories])
+                @include('common.categories_bar', ['categories' => $categories, 'top_users' => $top_users])
                 <div class="col-sm-9 page-content">
                     <div class="caption">
                         <h2>検索結果</h2>

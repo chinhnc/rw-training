@@ -1862,7 +1862,7 @@ table.add-manage-table > tbody > tr > th {
   float: left;
   clear: none;
   width: 31%;
-  height: 400px;
+  height: 450px;
   margin-right: 16px;
 }
 .item-list.make-grid .photobox,
@@ -2112,6 +2112,7 @@ table.add-manage-table > tbody > tr > th {
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
+  width: 60px;
 }
 #sidebar .posts-list .widget-thumb:hover img {
   border-color: #3498db;
