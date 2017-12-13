@@ -15,7 +15,7 @@
 
                             <div class="col-md-6 col-sm-6 search-col">
                                 <div class="form-group is-empty">
-                                    <input id="search-input" class="form-control keyword" name="keyword" value="{{ empty($keyword) ? '' : $keyword }}" placeholder="Enter Keyword" type="text">
+                                    <input id="search-input" class="form-control keyword" name="keyword" value="{{ empty($keyword) ? '' : $keyword }}" placeholder="Enter Keyword" type="text" autocomplete="off">
                                     <span class="material-input"></span>
                                 </div>
                                 <i class="fa fa-search"></i>
@@ -42,7 +42,22 @@
                 select: function(event, ui) {
                     $('#search-input').val(ui.item.value);
                 }
-            });
+            }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                var inner_html = '<a href="' + item.url + '" >' +
+                    '<div class="list_item_container">' +
+                    '<div class="image">' +
+                    '<img src="' + item.image + '" >' +
+                    '</div>' +
+                    '<div class="label-search">' +
+                    '<h4><b>' + item.title + '</b></h4>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>';
+                return $( "<li></li>" )
+                    .data( "item.autocomplete", item )
+                    .append(inner_html)
+                    .appendTo( ul );
+            };
         });
     </script>
 @endsection
