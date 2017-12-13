@@ -18,7 +18,7 @@ return [
         ],
         'autocomplete' => [
             'termCount' => 10,
-            'stringLimit' => 60,
+            'stringLimit' => 40,
         ]
     ],
     'users' => [

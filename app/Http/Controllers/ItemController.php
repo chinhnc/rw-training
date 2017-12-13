@@ -54,7 +54,8 @@ class ItemController extends Controller
             $items = Item::active()->defaultOrder()->paginate(config('settings.items.paginate.perPage'));
         }
 
-        return view('items.search', compact(['items', 'categories', empty($keyword) ? '' : 'keyword']));
+        $top_users = Ranking::getCurrentTopUsersFromCache();
+        return view('items.search', compact(['items', 'top_users','categories', empty($keyword) ? '' : 'keyword']));
     }
 
     public function autocomplete(Request $request)
@@ -70,11 +71,13 @@ class ItemController extends Controller
         foreach ($queries as $item) {
             $results[] = [
                 'id' => $item->id,
-                'value' => str_limit(
+                'image' => asset('uploads/' . $item->image),
+                'url' => route('item.show', $item->id),
+                'title' => str_limit(
                     $item->title,
                     config('settings.items.autocomplete.stringLimit'),
                     '...'
-                )
+                ),
             ];
         }
 

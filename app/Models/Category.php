@@ -22,4 +22,19 @@ class Category extends Model
     {
         return $this->items()->active();
     }
+
+    public function item_categories()
+    {
+        return $this->hasMany('App\Models\ItemCategory');
+    }
+
+    // this is a recommended way to declare event handlers
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($category) { // before delete() method call this
+             $category->item_categories()->delete();
+             // do the rest of the cleanup...
+        });
+    }
 }
