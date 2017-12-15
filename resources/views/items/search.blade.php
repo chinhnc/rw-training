@@ -4,7 +4,7 @@
 
 @section('content')
     @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
-    <div class="main-container">
+    <div> 
         <div class="container">
             <div class="row">
                 @include('common.categories_bar', ['categories' => $categories, 'top_users' => $top_users])
@@ -17,7 +17,7 @@
                             <div class="item-list make-grid">
                                 <div class="col-sm-2 no-padding photobox">
                                     <div class="add-image">
-                                        <a href="{{ route('item.show', $item->id) }}"><img src="{{ asset('uploads/'.$item->image) }}" alt=""></a>
+                                        <a href="{{ route('item.show', $item->id) }}"><img src="{{ asset('uploads/'.$item->image) }}" alt="" style="width:230px;height:192px"></a>
                                     </div>
                                 </div>
                                 <div class="col-sm-7 add-desc-box">

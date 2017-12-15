@@ -2625,3 +2625,37 @@ label.star-avg {
   color: #444;
   transition: all .2s;
 }
+
+/* autocomplete */
+
+.ui-menu-item{
+  height: 50px;
+  border: 1px solid #ececf9;
+}
+.ui-widget-content .ui-state-active {
+  background-color: white !important;
+  border: none !important;
+}
+.list_item_container {
+  float: left;
+}
+.ui-widget-content .ui-state-active .list_item_container {
+  background-color: #f5f5f5;
+}
+
+.image {
+  float: left;
+  padding: 5px;
+}
+.image img{
+  width: 40px;
+  height : 30px;
+}
+.label-search{
+  margin: 8px;
+  float:left;
+  text-align: left;
+}
+input:focus{
+  background-color: #f5f5f5;
+}
