@@ -15,4 +15,7 @@
     <!-- Copyright End -->
 
 </footer>
+<a href="#" class="back-to-top" style="display: none;">
+    <i class="fa fa-angle-up"></i>
+</a>
 <!-- Footer Section End -->

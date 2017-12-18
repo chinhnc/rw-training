@@ -18,4 +18,12 @@
  *
  */
 
+use Encore\Admin\Form;
+use App\Admin\Extensions\Form\CKEditor;
+use Encore\Admin\Grid\Column;
+use App\Admin\Extensions\Tools\Popover;
+
 Encore\Admin\Form::forget(['map', 'editor']);
+Form::extend('ckeditor', CKEditor::class);
+
+Column::extend('popover', Popover::class);

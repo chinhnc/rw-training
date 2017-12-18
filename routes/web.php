@@ -20,6 +20,7 @@ Route::resource('item', 'ItemController', ['only' => ['show']]);
 Route::resource('contact', 'ContactController', ['only' => ['create', 'store']]);
 Route::any('/search', 'ItemController@searchItem')->name('item_search');
 Route::get('search/autocomplete', 'ItemController@autocomplete');
+Route::get('/news', 'NewsController@index')->name('news');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'UserController@show')->name('user_show');

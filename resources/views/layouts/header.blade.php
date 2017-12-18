@@ -18,6 +18,7 @@
             <!-- Navbar Start -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ route('news') }}">お知らせ</a></li>
                     <li><a href="{{ route('contact.create') }}">問い合わせ</a></li>
                     @guest
                         <li><a href="{{ route('login') }}"><i class="lnr lnr-enter"></i> ログイン</a></li>
