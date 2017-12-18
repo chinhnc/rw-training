@@ -30,5 +30,13 @@ return [
     ],
     'cache' => [
         'cache_minutes' => 1440,
-    ]
+    ],
+    'news' => [
+        'paginate' => [
+            'perPage' => 15,
+        ],
+        'home' => [
+            'limit' => 3,
+        ],
+    ],
 ];

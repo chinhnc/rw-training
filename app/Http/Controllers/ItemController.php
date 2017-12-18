@@ -18,9 +18,7 @@ class ItemController extends Controller
 {
     public function show(Item $item)
     {
-        $top_users = Ranking::getCurrentTopUsersFromCache();
-        $categories = Category::all();
-        return view('items.show', compact(['item', 'categories', 'top_users']));
+        return view('items.show', compact('item'));
     }
 
     public function actionItem(Item $item)
@@ -45,7 +43,6 @@ class ItemController extends Controller
 
     public function searchItem(Request $request)
     {
-        $categories = Category::all();
         $keyword = $request->keyword;
 
         if (!empty($keyword)) {
@@ -54,8 +51,7 @@ class ItemController extends Controller
             $items = Item::active()->defaultOrder()->paginate(config('settings.items.paginate.perPage'));
         }
 
-        $top_users = Ranking::getCurrentTopUsersFromCache();
-        return view('items.search', compact(['items', 'top_users','categories', empty($keyword) ? '' : 'keyword']));
+        return view('items.search', compact(['items', empty($keyword) ? '' : 'keyword']));
     }
 
     public function autocomplete(Request $request)

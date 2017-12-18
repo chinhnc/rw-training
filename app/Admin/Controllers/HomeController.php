@@ -23,8 +23,8 @@ class HomeController extends Controller
             $content->description('Management');
 
             $all_contacts = sizeof(Contact::all());
-            $uncheck_contacts = sizeof(Contact::where('checked', 1)->get());
-            $checked_contacts = sizeof(Contact::where('checked', 0)->get());
+            $uncheck_contacts = sizeof(Contact::where('checked', 0)->get());
+            $checked_contacts = sizeof(Contact::where('checked', 1)->get());
             $all_users = sizeof(User::all());
             $all_categories = sizeof(Category::all());
             $all_items = sizeof(Item::all());

@@ -21,4 +21,5 @@ Route::group([
         'create', 'store', 'destroy'
     ]]);
     $router->post('contacts/toggle-status', 'ContactController@toggleContactCheckedStatus');
+    $router->resource('news', NewsController::class);
 });

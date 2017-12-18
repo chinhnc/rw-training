@@ -73,14 +73,15 @@ class ItemController extends Controller
     protected function grid()
     {
         return Admin::grid(Item::class, function (Grid $grid) {
+            $grid->model()->orderBy('updated_at', 'desc');
 
             $grid->id('ID')->sortable();
             $grid->title('Title');
-            $grid->description('Description');
+            $grid->description('Description')->popover('right');
             $grid->categories('Categories')->pluck('name')->label();
             $grid->point_num('Point');
-            $grid->url('URL');
-            $grid->image('Image')->image();
+            $grid->url('URL')->popover('right');
+            $grid->image('Image')->image('', 100, 100);
             $grid->is_active('Is Active');
             $grid->start_time('Start Time');
             $grid->end_time('End Time');
@@ -122,7 +123,7 @@ class ItemController extends Controller
             $form->display('id', 'ID');
 
             $form->text('title', 'Title')->rules('required|max:255');
-            $form->textarea('description', 'Description')->rules('required');
+            $form->ckeditor('description', 'Description')->rules('required');
             $form->number('point_num', 'Point')->rules('required|numeric');
             $form->text('url', 'URL')->rules('required|max:255');
             $form->image('image', 'Image')->rules('required');

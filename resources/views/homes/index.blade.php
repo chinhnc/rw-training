@@ -4,13 +4,16 @@
 
 @section('content')
     @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
-    @include('common.top_items', ['top_items' => $top_items])
+    @include('common.top_items')
     <div style="padding-bottom: 80px;">
         <div class="container">
             <div class="row">
-                @include('common.categories_bar', ['categories' => $categories, 'top_users' => $top_users])
+                @include('common.categories_bar')
                 <div class="col-sm-9 page-content">
-
+                    <div class="inner-box">
+                        @include('common.news')
+                        <span><a href="{{ route('news') }}">もっとみる＞＞</a></span>
+                    </div>
                     <div class="adds-wrapper">
                         @foreach($items as $item)
                             <div class="item-list make-grid">
@@ -21,14 +24,14 @@
                                 </div>
                                 <div class="col-sm-7 add-desc-box">
                                     <div class="add-details">
-                                        <h5 class="add-title"><a href="{{ route('item.show', $item->id) }}">{{ str_limit($item->title, $limit = 50, $end = '...') }}</a></h5>
+                                        <h5 class="add-title"><a href="{{ route('item.show', $item->id) }}">{!! str_limit($item->title, $limit = 50, $end = '...') !!}</a></h5>
                                         <div class="info">
                                             @foreach($item->categories as $category)
                                                 <a href="{{ route('show_items_by_category', $category->id) }}" class="btn btn-common btn-sm"><span>{{ $category->name }}</span> </a>
                                             @endforeach
                                         </div>
                                         <div class="item_desc">
-                                            <a href="{{ route('item.show', $item->id) }}">{{ str_limit($item->description, $limit = 100, $end = '...') }}</a>
+                                            <a href="{{ route('item.show', $item->id) }}">{!! str_limit($item->description, $limit = 100, $end = '...') !!}</a>
                                         </div>
                                     </div>
                                 </div>

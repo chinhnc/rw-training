@@ -16,7 +16,7 @@
                         {{ session('success-msg') }}
                     </div>
                 @endif
-                @include('common.categories_bar', ['categories' => $categories, 'top_users' => $top_users])
+                @include('common.categories_bar')
                 <div class="col-sm-9 page-content">
                     <div class="box">
                         <h2 class="title-2">
@@ -27,7 +27,7 @@
                         </h2>
                         <div class="row">
                             <div class="ads-details-info col-md-8">
-                                <p class="mb15">{{ $item->description }}</p>
+                                <p class="mb15">{!! $item->description !!}</p>
                             </div>
                             <div class="col-md-4">
                                 <aside class="panel panel-body panel-details">
