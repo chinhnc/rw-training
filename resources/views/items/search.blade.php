@@ -4,16 +4,16 @@
 
 @section('content')
     @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
-    <div> 
+    <div class="main-container">
         <div class="container">
             <div class="row">
-                @include('common.categories_bar', ['categories' => $categories, 'top_users' => $top_users])
+                @include('common.categories_bar')
                 <div class="col-sm-9 page-content">
-                    <div class="caption">
+                    <div class="caption text-center">
                         <h2>検索結果</h2>
                     </div>
                     <div class="adds-wrapper">
-                        @foreach($items as $item)
+                        @forelse($items as $item)
                             <div class="item-list make-grid">
                                 <div class="col-sm-2 no-padding photobox">
                                     <div class="add-image">
@@ -37,7 +37,11 @@
                                     <h2 class="item-price" style="color: red"> {{ $item->point_num }}P </h2>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="alert alert-warning text-center">
+                                該当する案件がございません!
+                            </div>
+                        @endforelse
                     </div>
                     <div class="text-center" style="margin-top: 20px">
                         @if(!empty($keyword))

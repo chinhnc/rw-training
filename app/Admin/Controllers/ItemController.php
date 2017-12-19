@@ -133,8 +133,8 @@ class ItemController extends Controller
             ];
             $form->switch('is_active', 'Is Active')->states($states)->rules('required');
             $form->multipleSelect('categories', 'Categories')->options(Category::all()->pluck('name', 'id'))->rules('required');
-            $form->datetime('start_time', 'Start Time')->rules('required');
-            $form->datetime('end_time', 'End Time')->rules('required');
+            $form->datetime('start_time', 'Start Time')->rules('required|after_or_equal:today');
+            $form->datetime('end_time', 'End Time')->rules('required|after_or_equal:start_time');
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');

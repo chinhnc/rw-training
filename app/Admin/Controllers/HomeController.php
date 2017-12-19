@@ -37,6 +37,33 @@ class HomeController extends Controller
                 'all_categories',
                 'all_items'
             ])));
+
+            $content->row(function (Row $row) {
+
+                $row->column(3, function (Column $column) {
+                    $new_contacts = Contact::orderBy('id', 'desc')
+                        ->limit(config('settings.admin.home.index.contacts_limit'))->get();
+                    $column->append(view('admin.home.new_contacts')->with('new_contacts', $new_contacts));
+                });
+
+                $row->column(3, function (Column $column) {
+                    $new_users = User::orderBy('id', 'desc')
+                        ->limit(config('settings.admin.home.index.users_limit'))->get();
+                    $column->append(view('admin.home.new_users')->with('new_users', $new_users));
+                });
+
+                $row->column(3, function (Column $column) {
+                    $new_categories = Category::orderBy('id', 'desc')
+                        ->limit(config('settings.admin.home.index.categories_limit'))->get();
+                    $column->append(view('admin.home.new_categories')->with('new_categories', $new_categories));
+                });
+
+                $row->column(3, function (Column $column) {
+                    $new_items = Item::orderBy('id', 'desc')
+                        ->limit(config('settings.admin.home.index.items_limit'))->get();
+                    $column->append(view('admin.home.new_items')->with('new_items', $new_items));
+                });
+            });
         });
     }
 }

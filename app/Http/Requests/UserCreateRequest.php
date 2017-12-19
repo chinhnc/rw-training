@@ -37,8 +37,8 @@ class UserCreateRequest extends FormRequest
             'email'     => 'required|string|email|max:255|unique:users' . (!$user ? '' : ',email,' . $user->id),
             'tel'       => 'required|max:15|min:10|unique:users'. (!$user ? '' : ',tel,' . $user->id),
             'password'  => 'required|string|min:6|confirmed',
-            'birthday'  => 'required',
-            'gender'    => 'required',
+            'birthday'  => 'required|date|before:today',
+            'gender'    => 'required|in:Male,Female',
             'g-recaptcha-response' => 'required|captcha',
         ];
     }

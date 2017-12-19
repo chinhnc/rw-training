@@ -14,9 +14,9 @@
     @yield('stylesheet')
 </head>
 <body>
-    @include('layouts.header')
 
     <div id="app">
+        @include('layouts.header')
         @yield('content')
     </div>
 

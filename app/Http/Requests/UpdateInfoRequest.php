@@ -31,7 +31,7 @@ class UpdateInfoRequest extends FormRequest
             'name'      => 'required|string|max:255',
             'email'     => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'tel'       => 'required|max:15|min:10|unique:users,tel,' . $user->id,
-            'birthday'  => 'required|date',
+            'birthday'  => 'required|date|before:today',
             'gender'    => 'required|in:Male,Female',
         ];
     }
