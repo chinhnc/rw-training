@@ -39,4 +39,14 @@ return [
             'limit' => 3,
         ],
     ],
+    'admin' => [
+        'home' => [
+            'index' => [
+                'contacts_limit' => 10,
+                'users_limit' => 10,
+                'categories_limit' => 10,
+                'items_limit' => 10,
+            ],
+        ],
+    ],
 ];

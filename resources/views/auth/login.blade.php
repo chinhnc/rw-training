@@ -45,7 +45,7 @@
                             <div class="form-group{{ $errors->has('emailOrNickname') ? ' has-error' : '' }}">
                                 <div class="input-icon">
                                     <i class="icon fa fa-user"></i>
-                                    <input id="email" type="text" class="form-control" name="emailOrNickname" value="{{ old('emailOrNickname') }}" required autofocu placeholder="Email or Nickname">
+                                    <input id="email" type="text" class="form-control" name="emailOrNickname" value="{{ old('emailOrNickname') }}" required autofocu placeholder="メールかニックネーム">
                                 </div>
                                 @if ($errors->has('emailOrNickname'))
                                     <span>
@@ -56,7 +56,7 @@
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <div class="input-icon">
                                     <i class="icon fa fa-unlock-alt"></i>
-                                    <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
+                                    <input id="password" type="password" class="form-control" name="password" required placeholder="パスワード">
                                 </div>
                                 @if ($errors->has('password'))
                                     <span>

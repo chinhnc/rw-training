@@ -57,7 +57,7 @@ class ContactController extends Controller
             $grid->email('Email');
             $grid->tel('Tel');
             $grid->subject('Subject');
-            $grid->content('Content');
+            $grid->content('Content')->popover();
             $grid->checked('Checked?')->display(function ($checked) {
                 return $checked ? '<span style="color: blue;">YES</span>' : '<span style="color: red;">NO</span>';
             });

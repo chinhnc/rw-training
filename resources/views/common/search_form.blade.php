@@ -15,13 +15,15 @@
 
                             <div class="col-md-6 col-sm-6 search-col">
                                 <div class="form-group is-empty">
-                                    <input id="search-input" class="form-control keyword" name="keyword" value="{{ empty($keyword) ? '' : $keyword }}" placeholder="Enter Keyword" type="text" autocomplete="off">
+                                    <input id="search-input" class="form-control keyword"
+                                           name="keyword" value="{{ empty($keyword) ? '' : $keyword }}"
+                                           placeholder="キーワード入力…" type="text" autocomplete="off">
                                     <span class="material-input"></span>
                                 </div>
                                 <i class="fa fa-search"></i>
                             </div>
                             <div class="col-md-3 col-sm-6 search-col">
-                                <button type="submit" class="btn btn-common btn-search btn-block"><strong>Search</strong></button>
+                                <button type="submit" class="btn btn-common btn-search btn-block"><strong>検索</strong></button>
                             </div>
                         </form>
                     </div>
