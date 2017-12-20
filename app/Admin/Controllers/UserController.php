@@ -103,7 +103,7 @@ class UserController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->column('activated')->display(function ($activated) {
-                return $activated ? 'True' : 'False';
+                return $activated ? '<span class="label label-success">True</span>' : '<span class="label label-danger">False</span>';
             });
             $grid->name('Name')->sortable();
             $grid->nickname('Nickname');

@@ -96,8 +96,8 @@
                             <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <div class="input-icon">
                                     <select name="gender" class="form-control">
-                                        <option value="Male">男性</option>
-                                        <option value="Female">女性</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                                 @if ($errors->has('gender'))

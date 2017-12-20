@@ -82,7 +82,9 @@ class ItemController extends Controller
             $grid->point_num('Point');
             $grid->url('URL')->popover('right');
             $grid->image('Image')->image('', 100, 100);
-            $grid->is_active('Is Active');
+            $grid->column('is_active')->display(function ($is_active) {
+                return $is_active ? '<span class="label label-success">True</span>' : '<span class="label label-danger">False</span>';
+            });
             $grid->start_time('Start Time');
             $grid->end_time('End Time');
 
@@ -133,7 +135,7 @@ class ItemController extends Controller
             ];
             $form->switch('is_active', 'Is Active')->states($states)->rules('required');
             $form->multipleSelect('categories', 'Categories')->options(Category::all()->pluck('name', 'id'))->rules('required');
-            $form->datetime('start_time', 'Start Time')->rules('required|after_or_equal:today');
+            $form->datetime('start_time', 'Start Time')->rules('required');
             $form->datetime('end_time', 'End Time')->rules('required|after_or_equal:start_time');
 
             $form->display('created_at', 'Created At');

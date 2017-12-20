@@ -4,14 +4,13 @@
 
 @section('content')
     @include('common.search_form', ['keyword' => empty($keyword) ? '' : $keyword])
-    @include('common.top_items')
-    <div style="padding-bottom: 80px;">
+    <div class="main-container">
         <div class="container">
             <div class="row">
                 @include('common.categories_bar')
                 <div class="col-sm-9 page-content">
                     <div class="product-filter" style="color: red;">
-                        {{ $category->name }}:
+                        <h2>{{ $category->name }}</h2>
                     </div>
                     <div class="adds-wrapper">
                         @foreach($items as $item)
@@ -45,4 +44,5 @@
             </div>
         </div>
     </div>
+    @include('common.top_items')
 @endsection

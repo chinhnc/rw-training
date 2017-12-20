@@ -17,9 +17,8 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('common.categories_bar', function ($view) {
-            $top_users = Ranking::getCurrentTopUsersFromCache();
             $categories = Category::all();
-            $view->with(['categories' => $categories, 'top_users' => $top_users]);
+            $view->with(['categories' => $categories]);
         });
 
         view()->composer('common.top_items', function ($view) {
@@ -32,6 +31,15 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with('news', $news);
         });
 
+        view()->composer('layouts.header', function ($view) {
+            $categories = Category::all();
+            $view->with('categories', $categories);
+        });
+
+        view()->composer('common.ranking', function ($view) {
+            $top_users = Ranking::getCurrentTopUsersFromCache();
+            $view->with('top_users', $top_users);
+        });
     }
 
     /**

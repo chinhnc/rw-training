@@ -28,7 +28,7 @@
                         </form>
                     </div>
                 </div>
-                <table class="col-lg-offset-2 col-md-8 table-bordered table-striped table-condensed cf">
+                <table class="col-lg-offset-2 col-md-8 table-bordered table-striped table-condensed cf action-table">
                     <thead class="cf">
                         <tr>
                             <th class="col-md-2">利用日</th>
