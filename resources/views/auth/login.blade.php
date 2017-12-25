@@ -31,13 +31,13 @@
                         @endif
                         @if (session('activationStatus'))
                             <div class="alert alert-success">
-                                {{ trans('auth.activationStatus') }}
+                                {{ session('activationStatus') }}
                             </div>
                         @endif
 
                         @if (session('activationWarning'))
                             <div class="alert alert-warning">
-                                {{ trans('auth.activationWarning') }}
+                                {{ session('activationWarning') }}
                             </div>
                         @endif
                         <form role="form" class="login-form" method="POST" action="{{ route('login') }}">

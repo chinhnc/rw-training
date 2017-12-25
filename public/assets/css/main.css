@@ -350,16 +350,14 @@ select.form-control:focus {
 }
 .tbtn {
   color: #FFF !important;
-  font-size: 30px;
   height: 42px;
-  width: 105px;
   padding: 10px;
   cursor: pointer;
   position: fixed;
   background: #E74C3C;
   z-index: 999;
-  top: 124px;
   left: 0px;
+  bottom: 16px;
 }
 .tbtn p {
   font-size: 12px;
@@ -442,7 +440,7 @@ nav#menu span.fa.fa-bars:hover {
 }
 .navbar-header {
   position: relative;
-  padding: 15px 0;
+  padding: 10px 0;
   margin: 0 !important;
 }
 .main-navigation .navbar-nav {
@@ -595,9 +593,6 @@ nav#menu span.fa.fa-bars:hover {
   color: #444;
   right: 15px;
   padding: 15px;
-}
-.search-bar .form-group {
-  margin: 0 0 0 12px;
 }
 .search-bar .btn-group,
 .search-bar .btn-group-vertical {
@@ -1288,6 +1283,7 @@ footer .menu li a:hover {
 }
 .product-filter {
   height: 40px;
+  margin-bottom: 20px;
 }
 .product-filter .grid-list-count {
   float: left;
@@ -1527,7 +1523,7 @@ footer .menu li a:hover {
   margin-top: 10px;
   margin-bottom: 30px;
   width: auto;
-  font-size: 13;
+  font-size: 13px;
 }
 /* ==========================================================================
    Pricing Table Style
@@ -2653,6 +2649,7 @@ label.star-avg {
 input:focus{
   background-color: #f5f5f5;
 }
+
 
 html, body {
   height: 100%;

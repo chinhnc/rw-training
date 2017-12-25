@@ -11,7 +11,20 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- End Toggle Nav Link For Mobiles -->
-                <a class="" href="{{ route('home') }}"><h4>アフリエイトサイト</h4></a>
+                <div id="logo">
+                    <a class="sm-logo" href="{{ route('home') }}"><span>アフリエイトサイト</span></a>
+                    @if(Auth::user())
+                        <a class="sm-user-pb" href="{{ route('passbook') }}">
+                            <span class="sm-pb">
+                                {{ Auth::user()->getCurrentPoint ? Auth::user()->getCurrentPoint->approval_point : 0 }}pt
+                            </span>
+                            (判定中
+                            <span class="sm-pb">
+                                {{ Auth::user()->getCurrentPoint ? Auth::user()->getCurrentPoint->pending_point : 0 }}pt
+                            </span>)
+                        </a>
+                    @endif
+                </div>
             </div>
             <!-- brand and toggle menu for mobile End -->
 
@@ -55,5 +68,21 @@
             <!-- Navbar End -->
         </div>
     </nav>
+    <!-- Off Canvas Navigation -->
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas sm-categories">
+        <!--- Off Canvas Side Menu -->
+        <div class="close" data-toggle="offcanvas" data-target=".navmenu">
+            <i class="fa fa-close"></i>
+        </div>
+        <h3 class="title-menu">カテゴリー</h3>
+        <ul class="nav navmenu-nav"> <!--- Menu -->
+            @foreach($categories as $category)
+                <li><a href="{{ route('show_items_by_category', $category->id) }}">{{ $category->name }} ({{ sizeof($category->items) }})</a></li>
+            @endforeach
+        </ul><!--- End Menu -->
+    </div> <!--- End Off Canvas Side Menu -->
+    <div class="tbtn wow pulse sm-categories" id="menu" data-wow-iteration="infinite" data-wow-duration="500ms" data-toggle="offcanvas" data-target=".navmenu">
+        <p>カテゴリー</p>
+    </div>
 </div>
 <!-- Header Section End -->

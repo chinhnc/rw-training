@@ -10,10 +10,6 @@
             <div class="row">
                 @include('common.categories_bar')
                 <div class="col-sm-9 page-content">
-                    <div class="inner-box">
-                        @include('common.news')
-                        <span><a href="{{ route('news') }}">もっとみる＞＞</a></span>
-                    </div>
                     <div class="adds-wrapper">
                         @foreach($items as $item)
                             <div class="item-list make-grid">
@@ -42,8 +38,15 @@
                         @endforeach
                     </div>
                     {{ $items->links() }}
+                    <div class="inner-box">
+                        @include('common.news')
+                        <span><a href="{{ route('news') }}">もっとみる＞＞</a></span>
+                    </div>
                 </div>
             </div>
+            <aside id="sidebar" class="sm-sidebar">
+                @include('common.ranking')
+            </aside>
         </div>
     </div>
 @endsection

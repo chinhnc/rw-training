@@ -22,7 +22,7 @@
                         <h2 class="title-2">
                             <strong>{{ $item->title }}</strong>
                             <div style="font-size: 40px;">
-                                <strong style="color: red;">({{ $item->point_num }}) <span style="font-size: 30px;">ポイント</span></strong>
+                                <strong style="color: red;">{{ $item->point_num }}<span style="font-size: 30px;">ポイント</span></strong>
                             </div>
                         </h2>
                         <div class="row">
@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-md-4">
                                 <aside class="panel panel-body panel-details">
-                                    <img src="{{ asset('uploads/' . $item->image) }}" alt="">
+                                    <img style="height: 230px; width: 230px;" src="{{ asset('uploads/' . $item->image) }}" alt="">
                                 </aside>
                             </div>
                             <div class="text-center">

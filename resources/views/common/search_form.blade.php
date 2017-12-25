@@ -50,7 +50,7 @@
                     '<div class="image">' +
                     '<img src="' + item.image + '" >' +
                     '</div>' +
-                    '<div class="label-search">' +
+                    '<div class="label-search truncate">' +
                     '<h4><b>' + item.title + '</b></h4>' +
                     '</div>' +
                     '</div>' +

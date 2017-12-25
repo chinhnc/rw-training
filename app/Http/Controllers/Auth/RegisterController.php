@@ -88,14 +88,14 @@ class RegisterController extends Controller
             ]);
         } elseif($user->activated) {
             // actived email
-            return back()->withInput()->with('message', 'The email has already been taken.');
+            return back()->withInput()->with('message', 'メールはすでに使用していました！');
         } else {
-            return back()->withInput()->with('message', 'The email has already been taken. Please check your email to activate account.');
+            return back()->withInput()->with('message', 'メールはすでに使用していました！確認のメールを送信しました。メール内のURLをクリックし、登録を完了してください。');
         }
 
         $this->activationFactory->sendActivationMail($user);
 
-        return redirect('/login')->with('activationStatus', true);
+        return redirect('/login')->with('activationStatus', '確認のメールを送信しました。メール内のURLをクリックし、登録を完了してください。');
     }
 
     public function activateUser($token)
